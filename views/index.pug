@@ -1,0 +1,36 @@
+extend layout
+block header
+block content
+  .row#idea
+    .col-md-9
+      ul.timeline(data-bind='foreach: messages')
+        li
+          i.fa.fa-quote-left
+          .timeline-item
+            .timeline-body(data-bind='text: name')
+            .timeline-footer(data-bind='text: message')
+
+      div.no-ideas(data-bind='visible: shouldShowEmpty')
+        | There are no ideas!
+        br
+        | Use the form on the right
+
+    .col-md-3
+      .box
+        .box-header.with-border
+          h3.box-title Leave your Idea
+        form.form-horizontal
+          .box-body
+            .form-group
+              .col-sm-12
+                input.form-control(type='text', placeholder='Name',
+                  data-bind="value: name, valueUpdate: 'keyup', enterkey: addMessage")
+            .form-group
+              .col-sm-12
+                textarea#message.form-control(rows='3', placeholder='Message ...',
+                  data-bind="value: message, valueUpdate: 'keyup', enterkey: addMessage")
+
+          .box-footer
+            a.btn.btn-sm.btn-info.btn-flat.pull-right Post
+
+block javascript
