@@ -17,3 +17,5 @@ coverage.*
 junit.xml
 public
 scanLogs
+
+terraform.tfstate
